@@ -10,10 +10,24 @@ import {
     AppBar,
     Typography,
     IconButton,
-    ListItemButton,
+    ListItemButton, MenuList,
 } from '@mui/material';
-import { Menu as MenuIcon, ChevronLeft, ChevronRight, AccountCircle, Home, Settings, Place, Report } from '@mui/icons-material';
+import {
+    Menu as MenuIcon,
+    ChevronLeft,
+    ChevronRight,
+    AccountCircle,
+    Home,
+    Settings,
+    Place,
+    Report,
+    AdminPanelSettings, VerifiedUser, RestaurantMenu
+} from '@mui/icons-material';
 import { Outlet, Link, useLocation } from 'react-router-dom';
+import AdminPage from "./routes/AdminPage";
+import path from "node:path";
+import InmateDashboard from "./routes/InmateDashboard";
+import UsersPage from "./routes/UsersPage";
 
 const drawerWidth = 280;
 
@@ -27,10 +41,15 @@ const MainPage: React.FC = () => {
 
     const navigationItems = [
         { text: 'Пользователи', icon: <AccountCircle />, path: '/пользователи' },
+        // { text: 'Меню', icon: <Home />, path: '/меню' },
+        // { text: 'Баллы', icon: <Place />, path: '/баллы' },
+        // { text: 'Происшествие', icon: <Report />, path: '/происшествие' },
         { text: 'Регистрация', icon: <Settings />, path: '/регистрация' },
-        { text: 'Меню', icon: <Home />, path: '/меню' },
-        { text: 'Баллы', icon: <Place />, path: '/баллы' },
-        { text: 'Происшествие', icon: <Report />, path: '/происшествие' },
+        { text: 'Администрирование',  icon: <AdminPanelSettings />, path: '/Администрирование'},
+        { text: 'Лк заключенного',  icon: <VerifiedUser />, path: '/Лк заключенного'},
+        { text: 'Обновление меню',  icon: <RestaurantMenu />, path: '/Обновление меню'},
+
+
     ];
 
     return (

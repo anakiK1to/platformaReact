@@ -4,9 +4,12 @@ import LoginPage from '../pages/LoginPage/LoginPage'
 import MainPage from '../pages/MainPage/MainPage';
 import UsersPage from '../pages/MainPage/routes/UsersPage';
 import RegistrationPage from '../pages/MainPage/routes/RegistrationPage';
-import MenuPage from '../pages/MainPage/routes/MenuPage';
+import MenuPage from '../pages/MainPage/routes/menuConfiguration/MenuPage';
 import PointsPage from '../pages/MainPage/routes/PointsPage';
 import IncidentPage from '../pages/MainPage/routes/IncidentPage';
+import AdminPage from "../pages/MainPage/routes/AdminPage";
+import ChefDashboard from "../pages/MainPage/ChefDashboard";
+import InmateDashboard from "../pages/MainPage/routes/InmateDashboard";
 
 
 const AppRoutes: React.FC = () => (
@@ -21,6 +24,9 @@ const AppRoutes: React.FC = () => (
             <Route path="меню" element={<MenuPage />} />
             <Route path="баллы" element={<PointsPage />} />
             <Route path="происшествие" element={<IncidentPage />} />
+            <Route path="Администрирование" element={<AdminPage />} />
+            <Route path="Лк заключенного" element={<InmateDashboard />} />
+            <Route path="Обновление меню" element={<ChefDashboard />} />
         </Route>
     </Routes>
 );

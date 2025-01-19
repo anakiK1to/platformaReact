@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, TextField, Container, Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
 
 const LoginPage: React.FC = () => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const { login: authenticate } = useAuth();
+
+    useEffect(() => {
+        // Проверяем, если пользователь уже авторизован
+        const isAuthenticated = localStorage.getItem('isAuthenticated');
+        if (isAuthenticated) {
+            navigate('/main'); // Перенаправляем на основную страницу
+        }
+    }, [navigate]);
 
     const handleLoginClick = () => {
         if (login === 'user' && password === 'password') {
-            authenticate(); // Установка статуса аутентификации
+            localStorage.setItem('isAuthenticated', 'true'); // Сохраняем состояние авторизации
+            navigate('/main');
+        } else if (login === 'registrar' && password === 'registrar_password') {
+            localStorage.setItem('isAuthenticated', 'true'); // Сохраняем состояние авторизации
             navigate('/main');
         } else {
             console.log('Неверный логин или пароль');
@@ -27,6 +36,8 @@ const LoginPage: React.FC = () => {
                 label="Логин"
                 variant="outlined"
                 fullWidth
+                id="login"
+                name="login"
                 margin="normal"
                 value={login}
                 onChange={(e) => setLogin(e.target.value)}
@@ -35,6 +46,8 @@ const LoginPage: React.FC = () => {
                 label="Пароль"
                 variant="outlined"
                 fullWidth
+                id="password"
+                name="password"
                 margin="normal"
                 type="password"
                 value={password}

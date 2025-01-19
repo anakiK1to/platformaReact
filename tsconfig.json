@@ -8,6 +8,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "src",
+    "types": ["jest", "node"],
     "paths": {
       "@components/*": ["components/*"],
       "@types/*": ["types/*"],
@@ -15,6 +16,6 @@
       "@services/*": ["services/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "tests/**/*.ts"],
   "exclude": ["node_modules"]
 }
