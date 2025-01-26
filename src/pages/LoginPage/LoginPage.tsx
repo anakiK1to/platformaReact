@@ -1,37 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { Button, TextField, Container, Box, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Button, TextField, Container, Box, Typography, Alert } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { authenticateUser } from "../../api/services"; // импортируйте функцию
 
 const LoginPage: React.FC = () => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        // Проверяем, если пользователь уже авторизован
-        const isAuthenticated = localStorage.getItem('isAuthenticated');
-        if (isAuthenticated) {
-            navigate('/main'); // Перенаправляем на основную страницу
-        }
-    }, [navigate]);
+    const handleLoginClick = async () => {
+        try {
+            // Отправляем запрос на сервер для проверки логина и пароля
+            const response = await authenticateUser({ username: login, password });
 
-    const handleLoginClick = () => {
-        if (login === 'user' && password === 'password') {
-            localStorage.setItem('isAuthenticated', 'true'); // Сохраняем состояние авторизации
-            navigate('/main');
-        } else if (login === 'registrar' && password === 'registrar_password') {
-            localStorage.setItem('isAuthenticated', 'true'); // Сохраняем состояние авторизации
-            navigate('/main');
-        } else {
-            console.log('Неверный логин или пароль');
+            // Если успешный ответ
+            if (response.status === 200) {
+                // Сохраняем токен в localStorage
+                const { token } = response.data;
+                localStorage.setItem("authToken", token); // сохраняем токен
+
+                // Перенаправляем на основную страницу
+                navigate("/main");
+            }
+        } catch (error: any) {
+            // Обрабатываем ошибку
+            if (error.response && error.response.status === 401) {
+                setError('Неверный логин или пароль');
+            } else {
+                setError('Ошибка подключения к серверу');
+            }
         }
     };
+
+
 
     return (
         <Container maxWidth="xs">
             <Box textAlign="center" mt={4} mb={2}>
                 <Typography variant="h6" fontWeight="bold">Вход в аккаунт</Typography>
             </Box>
+            {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
             <TextField
                 label="Логин"
                 variant="outlined"
