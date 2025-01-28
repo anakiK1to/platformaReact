@@ -27,7 +27,6 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 import AdminPage from "./routes/AdminPage";
 import path from "node:path";
 import InmateDashboard from "./routes/InmateDashboard";
-import UsersPage from "./routes/UsersPage";
 
 const drawerWidth = 280;
 
@@ -40,16 +39,11 @@ const MainPage: React.FC = () => {
     };
 
     const navigationItems = [
-        { text: 'Пользователи', icon: <AccountCircle />, path: '/пользователи' },
-        // { text: 'Меню', icon: <Home />, path: '/меню' },
-        // { text: 'Баллы', icon: <Place />, path: '/баллы' },
-        // { text: 'Происшествие', icon: <Report />, path: '/происшествие' },
+        { text: 'Заключенные', icon: <AccountCircle />, path: '/Страница Заключенных' },
         { text: 'Регистрация', icon: <Settings />, path: '/регистрация' },
         { text: 'Администрирование',  icon: <AdminPanelSettings />, path: '/Администрирование'},
         { text: 'Лк заключенного',  icon: <VerifiedUser />, path: '/Лк заключенного'},
         { text: 'Обновление меню',  icon: <RestaurantMenu />, path: '/Обновление меню'},
-
-
     ];
 
     return (
