@@ -1,4 +1,3 @@
-// components/InmateDashboard.tsx
 import React from "react";
 import { Container, Typography, Button, Card, CardContent, Grid } from "@mui/material";
 

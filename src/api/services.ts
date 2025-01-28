@@ -12,6 +12,7 @@ export const getPrisoner = (id: string) => api.get(`/private/prisoners/${id}`);
 export const updatePrisoner = (id: string, data: any) => api.put(`/private/prisoners/${id}`, data);
 export const deletePrisoner = (id: string) => api.delete(`/private/prisoners/${id}`);
 export const createPrisoner = (data: any) => api.post(`/private/prisoners`, data);
+export const getPrisoners = () => api.get(`/private/prisoners`);
 
 // Dish Controller
 export const getDish = (id: string) => api.get(`/private/dishes/${id}`);
@@ -25,7 +26,7 @@ export const getUsers = () => api.get(`/private/users`);
 export const createUser = (data: any) => api.post(`/private/users`, data);
 export const deleteUser = (userId: string) => api.delete(`/private/users/${userId}`);
 export const updateUserRoles = (userId: string, roles: string[]) =>
-    api.patch(`/private/users/${userId}`, { roles });
+    api.patch(`/private/users/${userId}`, {roles});
 
 // Authentication Controller
 export const authenticateUser = (data: { username: string; password: string }) =>
