@@ -79,12 +79,13 @@ const DishManagement = () => {
             await updateDish(editDish.id, payload);
             fetchDishes(); // Обновляем список после обновления
             setEditDish(null); // Сбрасываем редактируемое блюдо
+            alert('Блюдо '+ editDish.name + ' обновлено');
             setNewDish({
                 name: '',
                 description: '',
                 receipt: '',
                 ingredients: []
-            }); // Очищаем форму
+            });
         } catch (err) {
             alert('Ошибка при обновлении блюда: ' + err); // Выводим ошибку
         }
@@ -147,6 +148,7 @@ const DishManagement = () => {
                 <Typography variant="h5">{editDish ? 'Редактировать блюдо' : 'Создать новое блюдо'}</Typography>
                 <TextField
                     label="Название блюда"
+                    id="dish-name"
                     value={newDish.name}
                     onChange={(e) => setNewDish({ ...newDish, name: e.target.value })}
                     fullWidth

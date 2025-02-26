@@ -95,15 +95,15 @@ const RegistrationScreen: React.FC = () => {
                     Заполните все поля для регистрации
                 </Typography>
 
-                <TextField label="Фамилия" value={lastName} onChange={(e) => setLastName(e.target.value)} fullWidth margin="normal" />
-                <TextField label="Имя" value={firstName} onChange={(e) => setFirstName(e.target.value)} fullWidth margin="normal" />
-                <TextField label="Отчество" value={patronymic} onChange={(e) => setPatronymic(e.target.value)} fullWidth margin="normal" />
-                <TextField label="Паспорт" value={passport} onChange={(e) => setPassport(e.target.value)} fullWidth margin="normal" />
+                <TextField label="Фамилия" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} fullWidth margin="normal" />
+                <TextField label="Имя" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} fullWidth margin="normal" />
+                <TextField label="Отчество" id="patronymic" value={patronymic} onChange={(e) => setPatronymic(e.target.value)} fullWidth margin="normal" />
+                <TextField label="Паспорт" id="passport" value={passport} onChange={(e) => setPassport(e.target.value)} fullWidth margin="normal" />
                 {/*<TextField label="Дата рождения" type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} fullWidth margin="normal" InputLabelProps={{ shrink: true }} />*/}
-                <TextField label="Дата рождения" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} fullWidth margin="normal" />
+                <TextField label="Дата рождения" id="birthDate" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} fullWidth margin="normal" />
                 <Box display="flex" gap={2}>
-                    <TextField label="Рост (см)" value={height} onChange={(e) => setHeight(e.target.value)} fullWidth margin="normal" type="number" />
-                    <TextField label="Вес (кг)" value={weight} onChange={(e) => setWeight(e.target.value)} fullWidth margin="normal" type="number" />
+                    <TextField label="Рост (см)" id="height" value={height} onChange={(e) => setHeight(e.target.value)} fullWidth margin="normal" type="number" />
+                    <TextField label="Вес (кг)" id="weight" value={weight} onChange={(e) => setWeight(e.target.value)} fullWidth margin="normal" type="number" />
                 </Box>
 
                 <FormControl fullWidth margin="normal">
@@ -117,7 +117,7 @@ const RegistrationScreen: React.FC = () => {
                     </Select>
                 </FormControl>
 
-                <TextField label="Пароль"  value={password} onChange={(e) => setPassword(e.target.value)} fullWidth margin="normal" InputLabelProps={{ shrink: true }} />
+                <TextField label="Пароль" id="password" value={password} onChange={(e) => setPassword(e.target.value)} fullWidth margin="normal" InputLabelProps={{ shrink: true }} />
                 <Box mt={4} textAlign="center">
                     <Button variant="contained" color="primary" fullWidth onClick={handleRegistration} disabled={showIndicator}>
                         {showIndicator ? <CircularProgress size={24} /> : 'Подтвердить регистрацию'}
